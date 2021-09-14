@@ -12,29 +12,25 @@ namespace HomeTask1.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        public List<User> users = new List<User>
+        public static readonly List<User> users = new List<User>
         {
             new User() { FirstName = "Tyler", LastName = "Durden "},
             new User() { FirstName = "Marla", LastName = "Singer "}
         };
-                    
+
         [HttpPost]
         public ActionResult<string> Post([FromBody] User user)
         {
 
-            string myObj = "Success";
-            return myObj.ToString();
+            string error = "error message";
+            return error;
         }
 
         [HttpGet]
-        public ActionResult<string> Get()
+        public IEnumerable<User> Get()
         {
-            var userList = new List<User>();
-            foreach (var user in users)
-            {
-                userList.Add(user);
-            }
-            return new JsonResult(userList);
+           
+            return users.ToArray();
             //string myObj = "[{\"Status\":\"Team Work Rocks\"},[{\"ProjectA\":\"1\"},{\"ProjectB\":\"2\"},{\"ProjectC\":\"3\"}]]";
             //return new JsonResult(myObj);
 
@@ -54,9 +50,9 @@ namespace HomeTask1.Controllers
         //}
     }
 
-    public class User
-    {
-        public string FirstName;
-        public string LastName;
-    }
+    //public class User
+    //{
+    //    public string FirstName { get; set; }
+    //    public string LastName { get; set; }
+    //}
 }

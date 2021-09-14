@@ -24,7 +24,7 @@ export class HomeComponent {
   }
 
   public GetData() {    
-    this.http.get<User[]>(this.url).subscribe(
+    this.http.get<any>(this.url).subscribe(
       data => {
         this.users = data;
       },
@@ -43,9 +43,9 @@ export class HomeComponent {
   }
 }
 
-interface User {
-  firstname: string;
-  lastname: string;
+class User {
+  firstName: string;
+  lastName: string;
 }
 
 
