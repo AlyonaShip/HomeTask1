@@ -19,28 +19,23 @@ namespace HomeTask1.Controllers
         };
 
         [HttpPost]
-        public ActionResult<string> Post([FromBody] User user)
+        public List<User> Post(User user)
         {
-
-            string error = "error message";
-            return error;
+            users.Add(user);
+            return users;
         }
 
         [HttpGet]
-        public IEnumerable<User> Get()
-        {
-           
-            return users.ToArray();
-            //string myObj = "[{\"Status\":\"Team Work Rocks\"},[{\"ProjectA\":\"1\"},{\"ProjectB\":\"2\"},{\"ProjectC\":\"3\"}]]";
-            //return new JsonResult(myObj);
-
+        public List<User> Get()
+        {           
+            return users;
         }
 
         [HttpPut]
-        public ActionResult<string> Put([FromBody] User user)
-        {                        
-            string myObj = user.FirstName + " " + user.LastName;
-            return myObj;
+        public List<User> Put(User user)
+        {
+            users.Add(user);
+            return users;
         }
 
         //[HttpDelete]

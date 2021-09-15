@@ -12,15 +12,22 @@ export class HomeComponent {
   public retPostData;
   public retGetData;
   public retDeleteData;
-  public retPutData;
+  public retPutData: string;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {    
 
   }  
   
 
-  public PostData() {    
-    const retVal = this.http.post(this.url, { FirstName: 'Tyler', LastName: 'Durden' }).subscribe(data => { this.retPostData = data; });
+  public PostData() {
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
+    this.http.post(this.url, body).subscribe(
+      data => {
+        this.retPostData = data;
+      },
+      err => {
+        console.log("POST Error")
+      });
   }
 
   public GetData() {    
@@ -29,13 +36,19 @@ export class HomeComponent {
         this.users = data;
       },
       err => {
-        console.log("Error")
+        console.log("GET Error")
       });
   }
 
   public PutData() {
-    const body = { FirstName: 'Tyler', LastName: 'Durden'};
-    this.http.put(this.url, body).subscribe(data => this.retPutData = data);
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk'};
+    this.http.put<any>(this.url, body).subscribe(
+      data => {
+        this.retPutData = data
+      },
+      err => {
+        console.log("PUT Error")
+      });
   }
 
   public DeleteData() {    
