@@ -18,7 +18,6 @@ export class HomeComponent {
 
   }  
   
-
   public PostData() {
     const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
     this.http.post(this.url, body).subscribe(
