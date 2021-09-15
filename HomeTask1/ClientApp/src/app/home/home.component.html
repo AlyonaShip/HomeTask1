@@ -8,8 +8,8 @@
 <hr />
 <input type="button" name="getBtn" style="height:25px;width:200px" (click)="GetData()" value="Execute Http Get Call" />
 <br />
-<div *ngIf="users">
-  <p *ngFor="let user of users ">
+<div *ngIf="retGetData">
+  <p *ngFor="let user of retGetData ">
     <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
   </p>
 </div>
@@ -20,4 +20,4 @@
 <hr />
 <input type="button" name="deleteBtn" style="height:25px;width:200px" (click)="DeleteData()" value="Execute Http Delete Call" />
 <br />
-
+{{retDeleteData}}

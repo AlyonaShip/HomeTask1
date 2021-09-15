@@ -6,11 +6,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  public users: User[];
 
   public url = 'https://localhost:44350/Home';
   public retPostData;
-  public retGetData;
+  public retGetData: User[];
   public retDeleteData;
   public retPutData: string;
 
@@ -32,7 +31,7 @@ export class HomeComponent {
   public GetData() {    
     this.http.get<any>(this.url).subscribe(
       data => {
-        this.users = data;
+        this.retGetData = data;
       },
       err => {
         console.log("GET Error")
@@ -51,7 +50,14 @@ export class HomeComponent {
   }
 
   public DeleteData() {    
-    this.http.delete(this.url).subscribe(data => console.log(data), err => { console.log("Error") });
+    this.http.delete(this.url).subscribe(
+      () => {
+        this.retDeleteData = 'Delete successful'
+      },        
+      err => {        
+        this.retDeleteData = err.message;
+        console.log("DELETE Error")
+      });
   }
 }
 

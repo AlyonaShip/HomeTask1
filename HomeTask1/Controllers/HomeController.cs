@@ -1,9 +1,11 @@
 ﻿using HomeTask1.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace HomeTask1.Controllers
@@ -31,17 +33,23 @@ namespace HomeTask1.Controllers
             return users;
         }
 
-        [HttpPut]
-        public List<User> Put(User user)
-        {
-            users.Add(user);
-            return users;
-        }
-
-        //[HttpDelete]
-        //public ActionResult<string> Delete()
+        //[HttpPut]
+        //public List<User> Put(User user)
         //{
-            
+
         //}
-    }
+
+        [HttpDelete]
+        public ActionResult Delete()
+        {
+            //HttpStatusCode
+            
+            //return HttpStatusCode.BadRequest;
+
+            return BadRequest();
+
+
+
+        }
+    }   
 }
