@@ -18,12 +18,13 @@ export class HomeComponent {
   }  
   
   public PostData() {
-    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk', IsSuccess: true };
     this.http.post(this.url, body).subscribe(
       data => {
         this.retPostData = data;
       },
       err => {
+        this.retPostData = err.message;
         console.log("POST Error")
       });
   }
@@ -39,12 +40,13 @@ export class HomeComponent {
   }
 
   public PutData() {
-    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk'};
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk', IsSuccess: true};
     this.http.put<any>(this.url, body).subscribe(
       data => {
         this.retPutData = data
       },
       err => {
+        this.retPutData = err.message;
         console.log("PUT Error")
       });
   }

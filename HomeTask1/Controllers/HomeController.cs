@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
+
 namespace HomeTask1.Controllers
 {
     [Route("[controller]")]
@@ -21,23 +22,38 @@ namespace HomeTask1.Controllers
         };
 
         [HttpPost]
-        public List<User> Post(User user)
+        public ActionResult<List<User>> Post(User user)
         {
-            users.Add(user);
-            return users;
+            if (user.IsSuccess)
+            {
+                users.Add(user);
+                return users;
+            }
+            else
+            {                
+                return BadRequest();
+            }
         }
 
         [HttpGet]
-        public List<User> Get()
-        {           
+        public ActionResult<List<User>> Get()
+        {            
             return users;
         }
 
-        //[HttpPut]
-        //public List<User> Put(User user)
-        //{
-
-        //}
+        [HttpPut]
+        public ActionResult<List<User>> Put(User user)
+        {
+            if (user.IsSuccess)
+            {
+                users.Add(user);
+                return users;
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
         [HttpDelete]
         public ActionResult Delete()

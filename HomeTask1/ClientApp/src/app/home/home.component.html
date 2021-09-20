@@ -3,7 +3,7 @@
 <div *ngIf="retPostData">
   <p *ngFor="let user of retPostData ">
     <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
-  </p>
+  </p>  
 </div>
 <hr />
 <input type="button" name="getBtn" style="height:25px;width:200px" (click)="GetData()" value="Execute Http Get Call" />
@@ -15,8 +15,12 @@
 </div>
 <hr />
 <input type="button" name="putBtn" style="height:25px;width:200px" (click)="PutData()" value="Execute Http Put Call" />
+<div *ngIf="retPutData">
+  <p *ngFor="let user of retPutData ">
+    <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
+  </p>
+</div>
 <br />
-<span>{{retPutData}}</span>
 <hr />
 <input type="button" name="deleteBtn" style="height:25px;width:200px" (click)="DeleteData()" value="Execute Http Delete Call" />
 <br />

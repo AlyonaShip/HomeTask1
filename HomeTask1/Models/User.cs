@@ -9,5 +9,6 @@ namespace HomeTask1.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool IsSuccess { get; set; }
     }
 }
