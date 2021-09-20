@@ -1,10 +1,7 @@
 <input type="button" name="postBtn" style="height:25px;width:200px" (click)="PostData()" value="Execute Http Post Call" />
 <br>
 <div *ngIf="retPostData">
-  <p *ngFor="let user of retPostData">
-    <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
-  </p>
-  <span>{{retPostData}}</span>
+  <span>Error message: <strong>{{retPostData.message}}</strong> Status code: <strong>{{retPostData.code}}</strong></span>
 </div>
 <hr />
 <input type="button" name="getBtn" style="height:25px;width:200px" (click)="GetData()" value="Execute Http Get Call" />

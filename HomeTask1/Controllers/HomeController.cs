@@ -23,9 +23,35 @@ namespace HomeTask1.Controllers
         };
 
         [HttpPost]      
-        public HttpResponseMessage Post(User user)
+        public ObjectResult Post()
         {
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            Random rnd = new Random();
+
+            var result1 = new ObjectResult(new
+            {
+                code = 500,
+                message = "A server error occurred.",
+            });
+
+            var result2 = new ObjectResult(new
+            {
+                code = 400,
+                message = "Bad Request",
+            });
+
+            var result3 = new ObjectResult(new
+            {
+                code = 404,
+                message = "Not Found",
+            });
+            var list = new List<ObjectResult>();
+            list.Add(result1);
+            list.Add(result2);
+            list.Add(result3);
+
+            int r = rnd.Next(list.Count);
+            
+            return list[r];
         }
 
         [HttpGet]

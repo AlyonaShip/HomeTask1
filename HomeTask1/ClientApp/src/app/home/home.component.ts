@@ -62,8 +62,7 @@ export class HomeComponent {
         LastName: 'Palahniuk',
         IsSuccess: true
       },
-    };
-    
+    };    
     this.http.delete(this.url, options).subscribe(
       data => {
         this.retDeleteData = data;
