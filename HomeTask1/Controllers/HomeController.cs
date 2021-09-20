@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-
+using System.Web.Http.ExceptionHandling;
 
 namespace HomeTask1.Controllers
 {
@@ -21,18 +22,10 @@ namespace HomeTask1.Controllers
             new User() { FirstName = "Marla", LastName = "Singer "}
         };
 
-        [HttpPost]
-        public ActionResult<List<User>> Post(User user)
+        [HttpPost]      
+        public HttpResponseMessage Post(User user)
         {
-            if (user.IsSuccess)
-            {
-                users.Add(user);
-                return users;
-            }
-            else
-            {                
-                return BadRequest();
-            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
         [HttpGet]
@@ -56,16 +49,14 @@ namespace HomeTask1.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete()
-        {
-            //HttpStatusCode
-            
-            //return HttpStatusCode.BadRequest;
-
-            return BadRequest();
-
-
-
+        public ObjectResult Delete()
+        {            
+            var result = new ObjectResult(new
+            {
+                code = 500,
+                message = "A server error occurred.",                
+            });                   
+            return result;
         }
     }   
 }

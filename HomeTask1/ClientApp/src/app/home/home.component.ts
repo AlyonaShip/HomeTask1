@@ -11,7 +11,8 @@ export class HomeComponent {
   public retPostData;
   public retGetData: User[];
   public retDeleteData;
-  public retPutData: string;
+  public retPutData;
+  
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {    
 
@@ -51,14 +52,24 @@ export class HomeComponent {
       });
   }
 
-  public DeleteData() {    
-    this.http.delete(this.url).subscribe(
-      () => {
-        this.retDeleteData = 'Delete successful'
+  public DeleteData() {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        FirstName: 'Chuck ',
+        LastName: 'Palahniuk',
+        IsSuccess: true
+      },
+    };
+    
+    this.http.delete(this.url, options).subscribe(
+      data => {
+        this.retDeleteData = data;
       },        
       err => {        
-        this.retDeleteData = err.message;
-        console.log("DELETE Error")
+        this.retDeleteData = err.message;               
       });
   }
 }

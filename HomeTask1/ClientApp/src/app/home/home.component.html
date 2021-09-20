@@ -1,27 +1,33 @@
 <input type="button" name="postBtn" style="height:25px;width:200px" (click)="PostData()" value="Execute Http Post Call" />
 <br>
 <div *ngIf="retPostData">
-  <p *ngFor="let user of retPostData ">
+  <p *ngFor="let user of retPostData">
     <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
-  </p>  
+  </p>
+  <span>{{retPostData}}</span>
 </div>
 <hr />
 <input type="button" name="getBtn" style="height:25px;width:200px" (click)="GetData()" value="Execute Http Get Call" />
 <br />
 <div *ngIf="retGetData">
-  <p *ngFor="let user of retGetData ">
+  <p *ngFor="let user of retGetData">
     <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
   </p>
 </div>
 <hr />
 <input type="button" name="putBtn" style="height:25px;width:200px" (click)="PutData()" value="Execute Http Put Call" />
 <div *ngIf="retPutData">
-  <p *ngFor="let user of retPutData ">
+  <p *ngFor="let user of retPutData">
     <span>First Name: <strong>{{user.firstName}}</strong> Last Name: <strong>{{user.lastName}}</strong></span>
   </p>
 </div>
 <br />
 <hr />
 <input type="button" name="deleteBtn" style="height:25px;width:200px" (click)="DeleteData()" value="Execute Http Delete Call" />
+<div *ngIf="retDeleteData">
+  <span>Error message: <strong>{{retDeleteData.message}}</strong> Status code: <strong>{{retDeleteData.code}}</strong></span>
+</div>
 <br />
-{{retDeleteData}}
+  
+
+
