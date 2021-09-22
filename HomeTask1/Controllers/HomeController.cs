@@ -20,58 +20,36 @@ namespace HomeTask1.Controllers
         {
             new User() { FirstName = "Tyler", LastName = "Durden "},
             new User() { FirstName = "Marla", LastName = "Singer "}
-        };
+        };        
 
         [HttpPost]      
-        public ObjectResult Post()
+        public ApiResponse<User> Post()
         {
-            Random rnd = new Random();
+            ApiResponse<User> response = new ApiResponse<User>();
+            response.StatusCode = 98765;
+            response.ErrorMessage = "Success!";
+            response.IsSuccess = true;
+            response.ReturnObject = users;
 
-            var result1 = new ObjectResult(new
-            {
-                code = 500,
-                message = "A server error occurred.",
-            });
-
-            var result2 = new ObjectResult(new
-            {
-                code = 400,
-                message = "Bad Request",
-            });
-
-            var result3 = new ObjectResult(new
-            {
-                code = 404,
-                message = "Not Found",
-            });
-            var list = new List<ObjectResult>();
-            list.Add(result1);
-            list.Add(result2);
-            list.Add(result3);
-
-            int r = rnd.Next(list.Count);
-            
-            return list[r];
+            return response;
         }
 
         [HttpGet]
-        public ActionResult<List<User>> Get()
-        {            
-            return users;
+        public ApiResponse<User> Get()
+        {
+            ApiResponse<User> response = new ApiResponse<User>();
+            response.StatusCode = 98765;
+            response.ErrorMessage = "Success!";
+            response.IsSuccess = true;
+            response.ReturnObject = users;
+            return response;
         }
 
         [HttpPut]
         public ActionResult<List<User>> Put(User user)
-        {
-            if (user.IsSuccess)
-            {
-                users.Add(user);
-                return users;
-            }
-            else
-            {
-                return BadRequest();
-            }
+        {            
+            users.Add(user);
+            return users;            
         }
 
         [HttpDelete]

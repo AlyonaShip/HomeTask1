@@ -19,7 +19,7 @@ export class HomeComponent {
   }  
   
   public PostData() {
-    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk', IsSuccess: true };
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
     this.http.post(this.url, body).subscribe(
       data => {
         this.retPostData = data;
@@ -33,7 +33,7 @@ export class HomeComponent {
   public GetData() {    
     this.http.get<any>(this.url).subscribe(
       data => {
-        this.retGetData = data;
+        this.retGetData = data.returnObject;
       },
       err => {
         console.log("GET Error")
@@ -41,7 +41,7 @@ export class HomeComponent {
   }
 
   public PutData() {
-    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk', IsSuccess: true};
+    const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
     this.http.put<any>(this.url, body).subscribe(
       data => {
         this.retPutData = data
@@ -59,8 +59,7 @@ export class HomeComponent {
       }),
       body: {
         FirstName: 'Chuck ',
-        LastName: 'Palahniuk',
-        IsSuccess: true
+        LastName: 'Palahniuk'        
       },
     };    
     this.http.delete(this.url, options).subscribe(

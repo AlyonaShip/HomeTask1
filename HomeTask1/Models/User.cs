@@ -8,7 +8,6 @@ namespace HomeTask1.Models
     public class User
     {
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public bool IsSuccess { get; set; }
+        public string LastName { get; set; }        
     }
 }
