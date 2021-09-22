@@ -30,7 +30,6 @@ namespace HomeTask1.Controllers
             response.ErrorMessage = "Success!";
             response.IsSuccess = true;
             response.ReturnObject = users;
-
             return response;
         }
 
@@ -46,10 +45,15 @@ namespace HomeTask1.Controllers
         }
 
         [HttpPut]
-        public ActionResult<List<User>> Put(User user)
+        public ApiResponse<User> Put(User user)
         {            
             users.Add(user);
-            return users;            
+            ApiResponse<User> response = new ApiResponse<User>();
+            response.StatusCode = 98765;
+            response.ErrorMessage = "Success!";
+            response.IsSuccess = true;
+            response.ReturnObject = users;
+            return response;            
         }
 
         [HttpDelete]

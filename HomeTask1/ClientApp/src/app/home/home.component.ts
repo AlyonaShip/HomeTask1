@@ -44,7 +44,7 @@ export class HomeComponent {
     const body = { FirstName: 'Chuck ', LastName: 'Palahniuk' };
     this.http.put<any>(this.url, body).subscribe(
       data => {
-        this.retPutData = data
+        this.retPutData = data.returnObject;
       },
       err => {
         this.retPutData = err.message;
