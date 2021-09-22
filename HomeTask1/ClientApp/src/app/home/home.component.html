@@ -1,7 +1,7 @@
 <input type="button" name="postBtn" style="height:25px;width:200px" (click)="PostData()" value="Execute Http Post Call" />
 <br>
 <div *ngIf="retPostData">
-  <span>Error message: <strong>{{retPostData.message}}</strong> Status code: <strong>{{retPostData.code}}</strong></span>
+  <span>Error message: <strong>{{retPostData.errorMessage}}</strong> Is Success: <strong>{{retPostData.isSuccess}}</strong></span>
 </div>
 <hr />
 <input type="button" name="getBtn" style="height:25px;width:200px" (click)="GetData()" value="Execute Http Get Call" />
@@ -21,7 +21,7 @@
 <hr />
 <input type="button" name="deleteBtn" style="height:25px;width:200px" (click)="DeleteData()" value="Execute Http Delete Call" />
 <div *ngIf="retDeleteData">
-  <span>Error message: <strong>{{retDeleteData.message}}</strong> Status code: <strong>{{retDeleteData.code}}</strong></span>
+  <span>Error message: <strong>{{retDeleteData.errorMessage}}</strong> Is Success: <strong>{{retDeleteData.isSuccess}}</strong></span>
 </div>
 <br />
   

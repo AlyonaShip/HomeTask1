@@ -25,19 +25,19 @@ namespace HomeTask1.Controllers
         [HttpPost]      
         public ApiResponse<User> Post()
         {
-            ApiResponse<User> response = new ApiResponse<User>();
-            response.StatusCode = 98765;
-            response.ErrorMessage = "Success!";
-            response.IsSuccess = true;
-            response.ReturnObject = users;
+            List<string> errMessages = new List<string>(new string[] { "Error1!", "Error2!", "Error3!" });
+            Random r = new Random();
+            int index = r.Next(errMessages.Count);
+            ApiResponse<User> response = new ApiResponse<User>();            
+            response.ErrorMessage = errMessages[index];
+            response.IsSuccess = false;           
             return response;
         }
 
         [HttpGet]
         public ApiResponse<User> Get()
         {
-            ApiResponse<User> response = new ApiResponse<User>();
-            response.StatusCode = 98765;
+            ApiResponse<User> response = new ApiResponse<User>();            
             response.ErrorMessage = "Success!";
             response.IsSuccess = true;
             response.ReturnObject = users;
@@ -48,8 +48,7 @@ namespace HomeTask1.Controllers
         public ApiResponse<User> Put(User user)
         {            
             users.Add(user);
-            ApiResponse<User> response = new ApiResponse<User>();
-            response.StatusCode = 98765;
+            ApiResponse<User> response = new ApiResponse<User>();            
             response.ErrorMessage = "Success!";
             response.IsSuccess = true;
             response.ReturnObject = users;
@@ -57,14 +56,19 @@ namespace HomeTask1.Controllers
         }
 
         [HttpDelete]
-        public ObjectResult Delete()
+        public ApiResponse<User> Delete()
         {            
-            var result = new ObjectResult(new
-            {
-                code = 500,
-                message = "A server error occurred.",                
-            });                   
-            return result;
+            ApiResponse<User> response = new ApiResponse<User>();                        
+            try
+            {                
+                throw new Exception("Exception");
+            }
+            catch (Exception ex)
+            {                
+                response.ErrorMessage = ex.Message;
+                response.IsSuccess = false;
+                return response;                
+            }
         }
     }   
 }
